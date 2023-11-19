@@ -1,6 +1,6 @@
 const InvalidDirectionError = require('../errors/invalid-direction-error');
 const OutOfBoundsError = require('../errors/out-of-bounds-error');
-const { NORTH, SOUTH, EAST, WEST, DIRECTIONS } = require('../utils/constants');
+const { LEFT, RIGHT, NORTH, SOUTH, EAST, WEST, DIRECTIONS } = require('../utils/constants');
 
 class Rover {
   #plateau;
@@ -47,6 +47,18 @@ class Rover {
       throw new OutOfBoundsError(
         `Your rover went out of plateau boundaries -> x: ${this.#coordinates[0]}, y: ${this.#coordinates[1]}`,
       );
+    }
+  }
+
+  turn(turnDirection) {
+    const currentDirectionIndex = DIRECTIONS.indexOf(this.#direction);
+
+    if (turnDirection === LEFT) {
+      this.#direction = DIRECTIONS[(currentDirectionIndex + 3) % 4];
+    } else if (turnDirection === RIGHT) {
+      this.#direction = DIRECTIONS[(currentDirectionIndex + 1) % 4];
+    } else {
+      throw new InvalidDirectionError(`The direction ${turnDirection} is not valid`);
     }
   }
 }

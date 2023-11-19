@@ -27,6 +27,10 @@ class Rover {
     }
   }
 
+  getPosition() {
+    return `${this.#coordinates[0]} ${this.#coordinates[1]} ${this.#direction}`;
+  }
+
   move() {
     switch (this.#direction) {
       case NORTH:

@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('./plateau')} Plateau
+ */
+
 const InvalidDirectionError = require('../errors/invalid-direction-error');
 const OutOfBoundsError = require('../errors/out-of-bounds-error');
 const { LEFT, RIGHT, NORTH, SOUTH, EAST, WEST, DIRECTIONS } = require('../utils/constants');
@@ -7,6 +11,13 @@ class Rover {
   #coordinates;
   #direction;
 
+  /**
+   * @param {Plateau} plateau - plateau instance
+   * @param {Object} coordinates - x and y coordinates
+   * @param {number} coordinates.x - x coordinate
+   * @param {number} coordinates.y - y coordinate
+   * @param {string} direction - N, S, E or W
+   */
   constructor(plateau, coordinates, direction) {
     this.#plateau = plateau;
     this.#coordinates = coordinates;
@@ -27,6 +38,10 @@ class Rover {
     }
   }
 
+  /**
+   * @returns {string} rover position
+   * @example 1 2 N
+   */
   getPosition() {
     return `${this.#coordinates.x} ${this.#coordinates.y} ${this.#direction}`;
   }
@@ -54,6 +69,9 @@ class Rover {
     }
   }
 
+  /**
+   * @param {string} turnDirection - L or R
+   */
   turn(turnDirection) {
     const currentDirectionIndex = DIRECTIONS.indexOf(this.#direction);
 

@@ -17,6 +17,11 @@ class Plateau {
     }
   }
 
+  /**
+   * @param {number} positionX - rover x coordinate
+   * @param {number} positionY - rover y coordinate
+   * @returns {boolean} true if rover is out of bounds, false otherwise
+   */
   isOutOfBounds(positionX, positionY) {
     if (!positionX || positionX < 0 || positionX > this.#x || !positionY || positionY < 0 || positionY > this.#y) {
       return true;

@@ -16,6 +16,13 @@ class Plateau {
       throw new InvalidPlateauSizeError('Plateau size must be at least 1x1');
     }
   }
+
+  isOutOfBounds(positionX, positionY) {
+    if (positionX < 0 || positionX > this.#x || positionY < 0 || positionY > this.#y) {
+      return true;
+    }
+    return false;
+  }
 }
 
 module.exports = Plateau;

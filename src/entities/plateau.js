@@ -18,7 +18,7 @@ class Plateau {
   }
 
   isOutOfBounds(positionX, positionY) {
-    if (positionX < 0 || positionX > this.#x || positionY < 0 || positionY > this.#y) {
+    if (!positionX || positionX < 0 || positionX > this.#x || !positionY || positionY < 0 || positionY > this.#y) {
       return true;
     }
     return false;

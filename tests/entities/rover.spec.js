@@ -9,7 +9,7 @@ describe('Rover tests', () => {
     };
 
     try {
-      new Rover(plateau, {x: 1, y: 1}, 'N');
+      new Rover(plateau, { x: 1, y: 1 }, 'N');
     } catch (error) {
       expect(plateau.isOutOfBounds).toHaveBeenCalledTimes(1);
       expect(plateau.isOutOfBounds).toHaveBeenCalledWith(1, 1);
@@ -23,7 +23,9 @@ describe('Rover tests', () => {
       isOutOfBounds: jest.fn(() => false),
     };
 
-    expect(() => new Rover(plateau, {x: 1, y: 1}, 'A')).toThrow(new InvalidDirectionError('The direction A is not valid}'));
+    expect(() => new Rover(plateau, { x: 1, y: 1 }, 'A')).toThrow(
+      new InvalidDirectionError('The direction A is not valid}'),
+    );
   });
 
   it('should move the rover correctly', () => {
@@ -31,19 +33,19 @@ describe('Rover tests', () => {
       isOutOfBounds: jest.fn(() => false),
     };
 
-    const rover1 = new Rover(plateau, {x: 1, y: 1}, 'N');
+    const rover1 = new Rover(plateau, { x: 1, y: 1 }, 'N');
     rover1.move();
     expect(rover1.getPosition()).toBe('1 2 N');
 
-    const rover2 = new Rover(plateau, {x: 1, y: 1}, 'E');
+    const rover2 = new Rover(plateau, { x: 1, y: 1 }, 'E');
     rover2.move();
     expect(rover2.getPosition()).toBe('2 1 E');
 
-    const rover3 = new Rover(plateau, {x: 1, y: 1}, 'S');
+    const rover3 = new Rover(plateau, { x: 1, y: 1 }, 'S');
     rover3.move();
     expect(rover3.getPosition()).toBe('1 0 S');
 
-    const rover4 = new Rover(plateau, {x: 1, y: 1}, 'W');
+    const rover4 = new Rover(plateau, { x: 1, y: 1 }, 'W');
     rover4.move();
     expect(rover4.getPosition()).toBe('0 1 W');
   });
@@ -54,7 +56,7 @@ describe('Rover tests', () => {
     };
 
     try {
-      const rover = new Rover(plateau, {x: 1, y: 1}, 'N');
+      const rover = new Rover(plateau, { x: 1, y: 1 }, 'N');
       plateau.isOutOfBounds.mockReturnValueOnce(true);
       rover.move();
     } catch (error) {
@@ -69,7 +71,7 @@ describe('Rover tests', () => {
       isOutOfBounds: jest.fn(() => false),
     };
 
-    const rover = new Rover(plateau, {x: 1, y: 1}, 'N');
+    const rover = new Rover(plateau, { x: 1, y: 1 }, 'N');
 
     expect(() => rover.turn('X')).toThrow(new InvalidDirectionError('The direction X is not valid'));
   });
@@ -79,7 +81,7 @@ describe('Rover tests', () => {
       isOutOfBounds: jest.fn(() => false),
     };
 
-    const rover = new Rover(plateau, {x: 1, y: 1}, 'N');
+    const rover = new Rover(plateau, { x: 1, y: 1 }, 'N');
 
     rover.turn('L');
     expect(rover.getPosition()).toBe('1 1 W');

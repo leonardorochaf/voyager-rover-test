@@ -28,7 +28,7 @@ describe('Explore Plateau tests', () => {
     new ExplorePlateau().execute(input);
 
     expect(Rover).toHaveBeenCalledTimes(1);
-    expect(Rover).toHaveBeenCalledWith(expect.any(Object), expect.any(Array), expect.any(String));
+    expect(Rover).toHaveBeenCalledWith(expect.any(Object), expect.any(Object), expect.any(String));
     expect(Rover.prototype.move).toHaveBeenCalledTimes(1);
   });
 
@@ -41,7 +41,7 @@ describe('Explore Plateau tests', () => {
     new ExplorePlateau().execute(input);
 
     expect(Rover).toHaveBeenCalledTimes(1);
-    expect(Rover).toHaveBeenCalledWith(expect.any(Object), expect.any(Array), expect.any(String));
+    expect(Rover).toHaveBeenCalledWith(expect.any(Object), expect.any(Object), expect.any(String));
     expect(Rover.prototype.turn).toHaveBeenCalledTimes(1);
     expect(Rover.prototype.turn).toHaveBeenCalledWith('L');
   });

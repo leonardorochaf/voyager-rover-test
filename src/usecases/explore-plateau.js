@@ -6,7 +6,7 @@ const { MOVE, LEFT, RIGHT } = require('../utils/constants');
 class ExplorePlateau {
   execute(input) {
     const plateau = new Plateau(input.plateau.x, input.plateau.y);
-    const rover = new Rover(plateau, [input.rover.x, input.rover.y], input.rover.direction);
+    const rover = new Rover(plateau, {x: input.rover.x, y: input.rover.y}, input.rover.direction);
 
     for (const command of input.rover.commands) {
       if (command === MOVE) {

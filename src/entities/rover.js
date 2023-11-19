@@ -16,9 +16,9 @@ class Rover {
   }
 
   #isValid() {
-    if (this.#plateau.isOutOfBounds(this.#coordinates[0], this.#coordinates[1])) {
+    if (this.#plateau.isOutOfBounds(this.#coordinates.x, this.#coordinates.y)) {
       throw new OutOfBoundsError(
-        `Your rover went out of plateau boundaries -> x: ${this.#coordinates[0]}, y: ${this.#coordinates[1]}`,
+        `Your rover went out of plateau boundaries -> x: ${this.#coordinates.x}, y: ${this.#coordinates.y}`,
       );
     }
 
@@ -28,28 +28,28 @@ class Rover {
   }
 
   getPosition() {
-    return `${this.#coordinates[0]} ${this.#coordinates[1]} ${this.#direction}`;
+    return `${this.#coordinates.x} ${this.#coordinates.y} ${this.#direction}`;
   }
 
   move() {
     switch (this.#direction) {
       case NORTH:
-        this.#coordinates[1]++;
+        this.#coordinates.y++;
         break;
       case SOUTH:
-        this.#coordinates[1]--;
+        this.#coordinates.y--;
         break;
       case EAST:
-        this.#coordinates[0]++;
+        this.#coordinates.x++;
         break;
       case WEST:
-        this.#coordinates[0]--;
+        this.#coordinates.x--;
         break;
     }
 
-    if (this.#plateau.isOutOfBounds(this.#coordinates[0], this.#coordinates[1])) {
+    if (this.#plateau.isOutOfBounds(this.#coordinates.x, this.#coordinates.y)) {
       throw new OutOfBoundsError(
-        `Your rover went out of plateau boundaries -> x: ${this.#coordinates[0]}, y: ${this.#coordinates[1]}`,
+        `Your rover went out of plateau boundaries -> x: ${this.#coordinates.x}, y: ${this.#coordinates.y}`,
       );
     }
   }
